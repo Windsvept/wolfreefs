@@ -11,7 +11,7 @@ function App() {
           opacity: '1',
           position: 'absolute',
           zIndex: '.5'
-        }}><source src="https://www.wolfreefs.com/background.mp4" type="video/mp4"></source>
+        }}><source src="https://r2.wolfreefs.com/background.mp4" type="video/mp4"></source>
       </video>
       <header className="App-header">
         <img src={wolfReefLogo} className="mainLogo" alt="wolfReefLogo" style={{
@@ -75,7 +75,7 @@ function App() {
             <video controls autoPlay loop muted style={{
               width: '100%',
               display: 'block'
-            }}><source src="https://www.wolfreefs.com/IMG_1945.mp4" type="video/mp4"></source>
+            }}><source src="https://r2.wolfreefs.com/IMG_1945.mp4" type="video/mp4"></source>
         </video>
           </div>
           <div id="lipsum" style={{
