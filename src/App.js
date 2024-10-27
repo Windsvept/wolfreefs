@@ -1,7 +1,5 @@
-import background from './background.mp4';
 import wolfReefLogo from './wolfReefLogo.jpg';
 import './App.css';
-import myVideo from './IMG_1945.mp4';
 import mainImg from './mainPage.jpg'; 
 
 function App() {
@@ -13,7 +11,7 @@ function App() {
           opacity: '1',
           position: 'absolute',
           zIndex: '.5'
-        }}><source src={background} type="video/mp4"></source>
+        }}><source src="https://www.wolfreefs.com/background.mp4" type="video/mp4"></source>
       </video>
       <header className="App-header">
         <img src={wolfReefLogo} className="mainLogo" alt="wolfReefLogo" style={{
@@ -77,7 +75,7 @@ function App() {
             <video controls autoPlay loop muted style={{
               width: '100%',
               display: 'block'
-            }}><source src={myVideo} type="video/mp4"></source>
+            }}><source src="https://www.wolfreefs.com/IMG_1945.mp4" type="video/mp4"></source>
         </video>
           </div>
           <div id="lipsum" style={{
