@@ -19,15 +19,15 @@ const Breakpoint = css`
 
 const correctVidRatio = css`
     height: 100%;
-    left: calc(49vw - 50%);
+    right: 0;
     top: calc(50vh - 50%);
     @media (max-width: 1050px) {
         height: 100%;
-        left: ${({vidWidth, windowWidth }) => {
-            if (windowWidth > vidWidth - (0.25 * windowWidth)) {
-                return 0;
+        ${({vidWidth, windowWidth }) => {
+            if (windowWidth > vidWidth - (1.4 * windowWidth)) {
+                return "right: 0";
             } else {
-                return "-25vw"
+                return "left: -140vw"
             }
         }};
         top: 0;
@@ -35,11 +35,11 @@ const correctVidRatio = css`
 
     @media (max-width: 900px) {
         height: 100%;
-        left: ${({vidWidth, windowWidth }) => {
-            if (windowWidth > vidWidth - (0.25 * windowWidth)) {
-                return 0;
+        ${({vidWidth, windowWidth }) => {
+            if (windowWidth > vidWidth - (1.4 * windowWidth)) {
+                return "right: 0";
             } else {
-                return "-25vw"
+                return "left: -140vw"
             }
         }};
         top: 0;
@@ -47,11 +47,11 @@ const correctVidRatio = css`
 
     @media (max-width: 800px) {
         height: 100%;
-        left: ${({vidWidth, windowWidth }) => {
-            if (windowWidth > vidWidth - (0.25 * windowWidth)) {
-                return 0;
+        ${({vidWidth, windowWidth }) => {
+            if (windowWidth > vidWidth - (1.4 * windowWidth)) {
+                return "right: 0";
             } else {
-                return "-25vw"
+                return "left: -140vw"
             }
         }};
         top: 0;
@@ -59,11 +59,11 @@ const correctVidRatio = css`
     
     @media (max-width: 500px) {
         height: 100%;
-        left: ${({vidWidth, windowWidth }) => {
-            if (windowWidth > vidWidth - (1.11 * windowWidth)) {
-                return 0;
+        ${({vidWidth, windowWidth }) => {
+            if (windowWidth > vidWidth - (2.25 * windowWidth)) {
+                return "right: 0";
             } else {
-                return "-111vw"
+                return "left: -225vw"
             }
         }};
         top: 0;

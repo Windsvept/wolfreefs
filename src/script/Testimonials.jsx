@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 import mainImg from '../images/mainPage.jpg'; 
+import testimonial2 from '../images/testimonial2.jpg'
 
 export const Testimonials = () => {
 
@@ -35,9 +36,8 @@ export const Testimonials = () => {
     const TestimonialContainer = styled('div')`
         display: flex;
         flex-direction: row;
-        margin: 30px;
+        margin: 20px;
         justify-content: space-around;
-        width: 100%;
     `;
 
     const TestimonialText = styled('div')`
@@ -70,7 +70,7 @@ export const Testimonials = () => {
                 <TestimonialText>
                     Coming soon ...
                 </TestimonialText>
-                <TestimonialImg src={mainImg} alt="Aquarium" />
+                <TestimonialImg src={testimonial2} alt="Aquarium" />
             </TestimonialContainer>
         </TestimonialsContainer>
     )
