@@ -168,6 +168,9 @@ export const Landing = () => {
                 vidWidth={vidWidth} 
                 windowHeight={windowHeight} 
                 windowWidth={windowWidth}
+                allowsInlineMediaPlayback={true}
+                playsInline
+                controls={false}
             >
                 <source src="https://r2.wolfreefs.com/background.mp4" type="video/mp4"></source>
             </MainVideo>

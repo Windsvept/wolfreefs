@@ -60,6 +60,9 @@ export const AboutUs = () => {
                 playing={true} 
                 loop 
                 muted 
+                allowsInlineMediaPlayback={true}
+                playsInline
+                controls={false}
                 width={window.innerWidth > "900px" ? "700px" : "100%"}
                 height={"500px"}
                 url="https://r2.wolfreefs.com/IMG_1945.mp4"
