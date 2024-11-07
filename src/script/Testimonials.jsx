@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 
 import mainImg from '../images/mainPage.jpg'; 
 import testimonial2 from '../images/testimonial2.jpg'
+import testimonial3 from '../images/testimonial3.jpg'
+import testimonial4 from '../images/testimonial4.jpg'
 
 export const Testimonials = () => {
 
@@ -71,6 +73,18 @@ export const Testimonials = () => {
                     Coming soon ...
                 </TestimonialText>
                 <TestimonialImg src={testimonial2} alt="Aquarium" />
+            </TestimonialContainer>
+            <TestimonialContainer>
+                <TestimonialImg src={testimonial3} alt="Aquarium" />
+                <TestimonialText>
+                    Coming soon ...
+                </TestimonialText>
+            </TestimonialContainer>
+            <TestimonialContainer>
+                <TestimonialText>
+                    Coming soon ...
+                </TestimonialText>
+                <TestimonialImg src={testimonial4} alt="Aquarium" />
             </TestimonialContainer>
         </TestimonialsContainer>
     )
