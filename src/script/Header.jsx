@@ -33,10 +33,9 @@ const Header = () => {
     `;
 
     const MainLogo = styled('img')`
-        min-width: 120px;
         max-width: 120px;
+        width: 120px;
         margin: 20px;
-        height: fit-content;
         display: block;
         position: relative;
         cursor: pointer;
