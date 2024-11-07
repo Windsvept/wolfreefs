@@ -71,7 +71,7 @@ export const AboutUs = () => {
                 <StyledP>We are a Aquarium service out of Orange County, serving both saltwater & freshwater tanks.</StyledP>
                 <StyledP>We provide setups, design, and maintenance for your unique tank.</StyledP>
                 <StyledP>We strive for excellent customer service, building a trustworthy relationship with our clients, 
-                and always being on call 2/7 for questions & emergencies.</StyledP>
+                and always being on call 24/7 for questions & emergencies.</StyledP>
             </AboutUsDesc>
         </AboutUsContainer>
     )
