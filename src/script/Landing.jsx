@@ -60,10 +60,10 @@ const correctVidRatio = css`
     @media (max-width: 500px) {
         height: 100%;
         ${({vidWidth, windowWidth }) => {
-            if (windowWidth > vidWidth - (2.25 * windowWidth)) {
+            if (windowWidth > vidWidth - (2 * windowWidth)) {
                 return "right: 0";
             } else {
-                return "left: -225vw"
+                return "left: -200vw"
             }
         }};
         top: 0;
