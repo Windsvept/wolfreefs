@@ -51,11 +51,22 @@ export const ContactUs = () => {
         width: 100%;
     `;
 
+    const StyledLink = styled('a')`
+        text-decoration: none;
+        color: #6fc2ff;
+        text-shadow: #000000d1 4px 2px 3px;
+    `;
+
     return (
         <ContactUsContainer id="ContactUs">
             <StyledH1>
                 Contact Us
             </StyledH1>
+            <p>
+                John Luke Wolf <br></br>
+                <StyledLink href="tel:714-917-9440">714-917-9440</StyledLink> <br></br>
+                <StyledLink href="mailto:johnwolf@wolfreefs.com">johnwolf@wolfreefs.com</StyledLink>
+            </p>
             <p>
                 Coming soon ...
             </p>

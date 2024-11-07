@@ -43,10 +43,15 @@ export const AboutUs = () => {
         }
     `;
 
-    const AboutUsDesc = styled('p')`
+    const AboutUsDesc = styled('div')`
         text-align: start;
         display: flex;
         margin: 20px;
+        flex-direction: column;
+    `;
+
+    const StyledP = styled('p')`
+        margin-bottom: 0;
     `;
     
     return (
@@ -60,10 +65,10 @@ export const AboutUs = () => {
                 url="https://r2.wolfreefs.com/IMG_1945.mp4"
             />
             <AboutUsDesc>
-                We are a Aquarium service out of Orange County, serving both saltwater & freshwater tanks. <br></br>
-                We provide setups, design, and maintenance for your unique tank. <br></br>
-                We strive for excellent customer service, building a trustworthy relationship with out clients, <br></br>
-                and always being on call 2/7 for questions & emergencies
+                <StyledP>We are a Aquarium service out of Orange County, serving both saltwater & freshwater tanks.</StyledP>
+                <StyledP>We provide setups, design, and maintenance for your unique tank.</StyledP>
+                <StyledP>We strive for excellent customer service, building a trustworthy relationship with our clients, 
+                and always being on call 2/7 for questions & emergencies.</StyledP>
             </AboutUsDesc>
         </AboutUsContainer>
     )
