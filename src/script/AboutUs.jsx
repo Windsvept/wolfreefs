@@ -58,10 +58,10 @@ export const AboutUs = () => {
         <AboutUsContainer id="AboutUs">
             <AboutUsVideo 
                 playing={true} 
-                loop 
-                muted 
+                loop={true}
+                muted={true}
                 allowsInlineMediaPlayback={true}
-                playsInline
+                playsinline
                 controls={false}
                 width={window.innerWidth > "900px" ? "700px" : "100%"}
                 height={"500px"}
