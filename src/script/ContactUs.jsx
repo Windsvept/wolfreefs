@@ -65,7 +65,7 @@ export const ContactUs = () => {
             <p>
                 John Luke Wolf <br></br>
                 <StyledLink href="tel:714-917-9440">714-917-9440</StyledLink> <br></br>
-                <StyledLink href="mailto:johnwolf@wolfreefs.com">johnwolf@wolfreefs.com</StyledLink>
+                <StyledLink href="mailto:wolfreefs@gmail.com">wolfreefs@gmail.com</StyledLink>
             </p>
             <p>
                 Coming soon ...
