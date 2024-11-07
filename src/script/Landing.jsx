@@ -24,10 +24,10 @@ const correctVidRatio = css`
     @media (max-width: 1050px) {
         height: 100%;
         ${({vidWidth, windowWidth }) => {
-            if (windowWidth > vidWidth - (1.4 * windowWidth)) {
-                return "right: 0";
+            if (windowWidth > vidWidth - (1.85 * windowWidth)) {
+                return "right: -160px";
             } else {
-                return "left: -140vw"
+                return "left: -185vw"
             }
         }};
         top: 0;
@@ -37,7 +37,7 @@ const correctVidRatio = css`
         height: 100%;
         ${({vidWidth, windowWidth }) => {
             if (windowWidth > vidWidth - (1.4 * windowWidth)) {
-                return "right: 0";
+                return "right: -160px";
             } else {
                 return "left: -140vw"
             }
@@ -48,10 +48,10 @@ const correctVidRatio = css`
     @media (max-width: 800px) {
         height: 100%;
         ${({vidWidth, windowWidth }) => {
-            if (windowWidth > vidWidth - (1.4 * windowWidth)) {
-                return "right: 0";
+            if (windowWidth > vidWidth - (1.85 * windowWidth)) {
+                return "right: -160px";
             } else {
-                return "left: -140vw"
+                return "left: -185vw"
             }
         }};
         top: 0;
@@ -111,6 +111,11 @@ const StickyText = styled('div')`
     flex-direction: column;
     text-shadow: #000000d1 4px 0px 3px;
     z-index: 1;
+
+    @media (max-width: 900px) {
+        bottom: 15% !important;
+    }
+
     ${Breakpoint}
 `;
 
