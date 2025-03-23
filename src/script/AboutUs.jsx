@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { SocialIcon } from 'react-social-icons'
 
 import mainImg from '../images/mainPage.jpg'; 
 
@@ -70,6 +71,12 @@ const StyledLink = styled('a')`
     text-shadow: #000000d1 4px 2px 3px;
 `;
 
+const SocialLinks = styled('div')`
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
+`;
+
 export const AboutUs = () => {
     
     return (
@@ -88,6 +95,10 @@ export const AboutUs = () => {
                 <StyledLink href="tel:714-917-9440">714-917-9440</StyledLink> <br></br>
                 <StyledLink href="mailto:wolfreefs@gmail.com">wolfreefs@gmail.com</StyledLink>
             </Contact>
+            <SocialLinks>
+                <SocialIcon network="yelp" url="https://www.yelp.com/biz/wolf-reefs-irvine/"/>
+                <SocialIcon network="facebook" url="https://m.facebook.com/61553232389040/"/>
+            </SocialLinks>
         </AboutUsContainer>
     )
 }
