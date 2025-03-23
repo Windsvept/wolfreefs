@@ -89,18 +89,18 @@ const Header = () => {
     return (
 
         <StyledHeader>
-            <NavLink activeClass="active" smooth spy to="Home">
+            <NavLink activeClass="active" smooth spy to="Home" href="#Home">
                 <MainLogo src={wolfReefLogo} alt="wolfReefLogo" />
             </NavLink>
             <HeaderMenu>
-                <NavItem><NavLink activeClass="active" smooth spy to="AboutUs">About Us</NavLink></NavItem>
-                <NavItem><NavLink activeClass="active" smooth spy to="Testimonial">Testimonials</NavLink></NavItem>
-                <NavItem><NavLink activeClass="active" smooth spy to="Gallery">Gallery</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="AboutUs" href="#AboutUs">About Us</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="Testimonial" href="#Testimonial">Testimonials</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="Gallery" href="#Gallery">Gallery</NavLink></NavItem>
             </HeaderMenu>
             <MobileMenu>
-                <NavItem><NavLink activeClass="active" smooth spy to="AboutUs">About Us</NavLink></NavItem>
-                <NavItem><NavLink activeClass="active" smooth spy to="Testimonial">Testimonials</NavLink></NavItem>
-                <NavItem><NavLink activeClass="active" smooth spy to="Gallery">Gallery</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="AboutUs" href="#AboutUs">About Us</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="Testimonial" href="#Testimonial">Testimonials</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="Gallery" href="#Gallery">Gallery</NavLink></NavItem>
             </MobileMenu>
         </StyledHeader>
 
