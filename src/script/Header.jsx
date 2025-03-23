@@ -24,6 +24,8 @@ const Header = () => {
         top: 0vw;
         z-index: 100;
         align-items: center;
+        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.7) 100%);
+        border-radius: 5px;
 
         @media (max-width: 670px) {
             flex-direction: column;
@@ -93,12 +95,12 @@ const Header = () => {
             <HeaderMenu>
                 <NavItem><NavLink activeClass="active" smooth spy to="AboutUs">About Us</NavLink></NavItem>
                 <NavItem><NavLink activeClass="active" smooth spy to="Testimonial">Testimonials</NavLink></NavItem>
-                <NavItem><NavLink activeClass="active" smooth spy to="ContactUs">Contact Us</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="Gallery">Gallery</NavLink></NavItem>
             </HeaderMenu>
             <MobileMenu>
                 <NavItem><NavLink activeClass="active" smooth spy to="AboutUs">About Us</NavLink></NavItem>
                 <NavItem><NavLink activeClass="active" smooth spy to="Testimonial">Testimonials</NavLink></NavItem>
-                <NavItem><NavLink activeClass="active" smooth spy to="ContactUs">Contact Us</NavLink></NavItem>
+                <NavItem><NavLink activeClass="active" smooth spy to="Gallery">Gallery</NavLink></NavItem>
             </MobileMenu>
         </StyledHeader>
 

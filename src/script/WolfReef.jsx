@@ -4,9 +4,9 @@ import '../css/WolfReefs.css';
 import Header from './Header';
 import Landing from './Landing';
 import AboutUs from './AboutUs';
-import Misc from './Misc';
 import Testimonials from './Testimonials';
-import ContactUs from './ContactUs';
+import Gallery from './Gallery';
+import Footer from './Footer';
 
 export const WolfReef = () => {
 
@@ -21,18 +21,18 @@ export const WolfReef = () => {
 
   const StyledBody = styled('div')`
     background-color: #040418;
+    width: 100vw;
   `;
 
   return (
-    <WolfReefsContainer>
+    <WolfReefsContainer data-testid="test">
       <Header />
       <StyledBody>
         <Landing />
         <AboutUs />
         <Testimonials />
-        <ContactUs />
-
-        <Misc />
+        <Gallery />
+        <Footer />
       </StyledBody>
     </WolfReefsContainer>
   );
