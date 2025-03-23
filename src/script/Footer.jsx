@@ -38,7 +38,7 @@ export const Footer = () => {
     return (
         <FooterContainer id="Footer">
             <StyledFooter>
-                <div>Wolf Reefs</div>
+                <div>&copy; 2025 Wolf Reefs</div>
                 <div>All Rights Reserved</div>
             </StyledFooter>
         </FooterContainer>
