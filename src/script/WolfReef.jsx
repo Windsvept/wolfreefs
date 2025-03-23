@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import '../css/WolfReefs.css';
 
+import { Headers } from './Headers';
 import Header from './Header';
 import Landing from './Landing';
 import AboutUs from './AboutUs';
@@ -26,6 +27,7 @@ export const WolfReef = () => {
 
   return (
     <WolfReefsContainer data-testid="test">
+      <Headers />
       <Header />
       <StyledBody>
         <Landing />

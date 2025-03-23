@@ -1,0 +1,125 @@
+{
+    "desc": "Aquarium Service based in Orange County Southern California",
+    "content": [
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": "https://www.wolfreefs.com",
+            "name": "Aquarium Services",
+            "serviceType": "Aquarium Service",
+            "openingHours": "Mo-Su",
+            "telephone": "+17149179440",
+            "email": "wolfreefs@gmail.com",
+            "provider": {
+                "@type": "LocalBusiness",
+                "name": "Wolf Reefs"
+            },
+            "areaServed": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 33.688446,
+                    "longitude": -117.830328
+                },
+                "geoRadius": 1000
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Aquarium Services",
+                "itemListElement": [
+                {
+                    "@type": "OfferCatalog",
+                    "name": "Saltwater Tank",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                            "@type": "Service",
+                            "name": "Weekly maintenance, cleaning, health checks"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                            "@type": "Service",
+                            "name": "New aquarium setup"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                            "@type": "Service",
+                            "name": "Aquarium design"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "OfferCatalog",
+                    "name": "Freshwater Tank",
+                    "itemListElement": [
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                            "@type": "Service",
+                            "name": "Weekly maintenance, cleaning, health checks"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                            "@type": "Service",
+                            "name": "New aquarium setup"
+                            }
+                        },
+                        {
+                            "@type": "Offer",
+                            "itemOffered": {
+                            "@type": "Service",
+                            "name": "Aquarium design"
+                            }
+                        }
+                    ]
+                }
+                ]
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": "https://www.wolfreefs.com",
+            "name": "Aquarium Maintenance",
+            "openingHours": "Mo-Su",
+            "telephone": "+17149179440",
+            "email": "wolfreefs@gmail.com",
+            "provider": {
+                "@type": "LocalBusiness",
+                "name": "Wolf Reefs"
+            },
+            "location": {
+                "@type": "County",
+                "name": "Orange County"
+            },
+            "image": "https://r2.wolfreefs.com/IMG_1925.jpg",
+            "description": "Personal Aquarium Services",
+            "url": "https://www.wolfreefs.com"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "@id": "https://www.wolfreefs.com/easter",
+            "name": "Aquarium Services Easter Discount",
+            "startDate": "Sun Feb 23 2025 12:00:00 GMT+0000 (Coordinated Universal Time)",
+            "endDate": "Wed Apr 30 2025 12:00:00 GMT+0000 (Coordinated Universal Time)",
+            "telephone": "+17149179440",
+            "email": "wolfreefs@gmail.com",
+            "location": {
+                "@type": "City",
+                "name": "Irvine"
+            },
+            "image": "https://r2.wolfreefs.com/IMG_1925.jpg",
+            "description": "Aquarium Services based in Orange County",
+            "url": "https://www.wolfreefs.com/easter"
+        }
+    ]
+}
