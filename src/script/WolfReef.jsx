@@ -8,21 +8,21 @@ import Testimonials from './Testimonials';
 import Gallery from './Gallery';
 import Footer from './Footer';
 
+const WolfReefsContainer = styled('div')`
+  text-align: center;
+  background-color: #040418;
+  min-height: 100vh;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
+
+const StyledBody = styled('div')`
+  background-color: #040418;
+  width: 100vw;
+`;
+
 export const WolfReef = () => {
-
-  const WolfReefsContainer = styled('div')`
-    text-align: center;
-    background-color: #040418;
-    min-height: 100vh;
-    display: flex;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  `;
-
-  const StyledBody = styled('div')`
-    background-color: #040418;
-    width: 100vw;
-  `;
 
   return (
     <WolfReefsContainer data-testid="test">

@@ -65,7 +65,7 @@ export const VideoComponent = ({
         loop
         muted
         autoPlay={false}
-        preload="none"
+        preload="auto"
         playsInline
         aria-label={alt}
         style={{

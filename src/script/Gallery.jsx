@@ -4,6 +4,77 @@ import { VideoComponent } from "./Video.tsx";
 import useWindowDimensions from './windowDimension';
 import mainImg from '../images/mainPage.jpg'; 
 
+const Breakpoint = css`
+    font-size: 40px;
+
+    @media (max-width: 1300px) {
+        font-size: 30px;
+    }
+    
+    @media (max-width: 850px) {
+        font-size: 20px;
+    }
+`;
+
+const GalleryContainer = styled('div')`
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    padding-top: 100px;
+
+    @media (max-width: 670px) {
+        padding-top: 150px;
+    }
+
+
+    ${Breakpoint}
+`;
+
+const Row = styled('div')`
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: space-around;
+    width: calc(100% - 40px);
+
+    @media (max-width: 670px) {
+        flex-direction: column;
+        margin: 10px 30px;
+        width: calc(100% - 60px);
+    }
+`;
+
+const GalleryImage = styled('img')`
+    width: 45%;
+
+    @media (max-width: 670px) {
+        width: 90%;
+        margin: 10px auto;
+    }
+`;
+
+const StepsImage = styled('img')`
+    width: 23%;
+    object-fit: cover;
+
+    @media (max-width: 670px) {
+        width: 90%;
+        margin: 10px auto;
+    }
+`;
+
+const VideoCssBig = {
+    "width": "45%",
+    "margin": "10px auto"
+};
+
+const VideoCssSmall = {
+    "width": "95%",
+    "margin": "10px auto"
+};
+
 export const Gallery = () => {
     const img1 = 'https://r2.wolfreefs.com/1.jpg';
     const img2 = 'https://r2.wolfreefs.com/2.jpg';
@@ -16,84 +87,13 @@ export const Gallery = () => {
     const step3 = 'https://r2.wolfreefs.com/IMG_1558.jpg';
     const step4 = 'https://r2.wolfreefs.com/IMG_1925.jpg';
 
-    const Breakpoint = css`
-        font-size: 40px;
-
-        @media (max-width: 1300px) {
-            font-size: 30px;
-        }
-        
-        @media (max-width: 850px) {
-            font-size: 20px;
-        }
-    `;
-
-    const GalleryContainer = styled('div')`
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        min-height: 100vh;
-        overflow: hidden;
-        padding-top: 100px;
-
-        @media (max-width: 670px) {
-            padding-top: 150px;
-        }
-
-
-        ${Breakpoint}
-    `;
-
-    const Row = styled('div')`
-        display: flex;
-        flex-direction: row;
-        margin: 20px;
-        justify-content: space-around;
-        width: calc(100% - 40px);
-
-        @media (max-width: 670px) {
-            flex-direction: column;
-            margin: 10px 30px;
-            width: calc(100% - 60px);
-        }
-    `;
-
-    const GalleryImage = styled('img')`
-        width: 45%;
-
-        @media (max-width: 670px) {
-            width: 90%;
-            margin: 10px auto;
-        }
-    `;
-
-    const StepsImage = styled('img')`
-        width: 23%;
-        object-fit: cover;
-
-        @media (max-width: 670px) {
-            width: 90%;
-            margin: 10px auto;
-        }
-    `;
-
-    const VideoCssBig = {
-        "width": "45%",
-        "margin": "10px auto"
-    };
-
-    const VideoCssSmall = {
-        "width": "95%",
-        "margin": "10px auto"
-    };
-
     const { windowWidth } = useWindowDimensions();
 
     return (
         <GalleryContainer id="Gallery">
             <Row>
-                <GalleryImage src={mainImg} alt="Aquarium" />
-                <GalleryImage src={img1} alt="Aquarium" />
+                <GalleryImage src={mainImg} alt="Aquarium1" />
+                <GalleryImage src={img1} alt="Aquarium2" />
             </Row>
             <Row>
                 <VideoComponent src={vid4_1} style={VideoCssSmall}/>
@@ -103,8 +103,8 @@ export const Gallery = () => {
                 <VideoComponent src={vid5} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall} />
             </Row>
             <Row>
-                <GalleryImage src={img2} alt="Aquarium" />
-                <GalleryImage src={img3} alt="Aquarium" />
+                <GalleryImage src={img2} alt="Aquarium3" />
+                <GalleryImage src={img3} alt="Aquarium4" />
             </Row>
             <Row>
                 <StepsImage src={step1} alt="Reef Tank Step 1" />
