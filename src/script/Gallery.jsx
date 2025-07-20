@@ -95,9 +95,9 @@ export const Gallery = () => {
                 <GalleryImage src={mainImg} alt="Aquarium1" />
                 <GalleryImage src={img1} alt="Aquarium2" />
             </Row>
-            <Row>
+            {/* <Row>
                 <VideoComponent src={vid4_1} style={VideoCssSmall}/>
-            </Row>
+            </Row> */}
             <Row>
                 <VideoComponent src={vid4_2} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall}/>
                 <VideoComponent src={vid5} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall} />

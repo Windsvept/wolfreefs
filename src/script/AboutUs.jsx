@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
-import { SocialIcon } from 'react-social-icons'
+import { SocialIcon } from 'react-social-icons';
+import { VideoComponent } from "./Video.tsx";
+import useWindowDimensions from './windowDimension';
 
 import mainImg from '../images/mainPage.jpg'; 
 
@@ -51,6 +53,17 @@ const AboutUsImage = styled('img')`
     }
 `;
 
+const VideoCssBig = {
+    "object-position": "top"
+};
+
+const VideoCssSmall = {
+    "object-position": "top",
+    "width": "90%",
+    "margin-top": "100px",
+    "margin-bottom": "0"
+};
+
 const AboutUsDesc = styled('div')`
     text-align: start;
     display: flex;
@@ -78,14 +91,15 @@ const SocialLinks = styled('div')`
 `;
 
 export const AboutUs = () => {
-    
+    const { windowWidth } = useWindowDimensions();
     return (
         <AboutUsContainer id="AboutUs">
             <AboutUsTop>
-                <AboutUsImage src={mainImg} alt="About Us" />
-
+                {/* <AboutUsImage src={mainImg} alt="About Us" /> */}
+                <VideoComponent src={"https://r2.wolfreefs.com/CarlaTestimonial.mp4"} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall}/>   
+   
                 <AboutUsDesc>
-                    <StyledP>We are a Aquarium service out of Orange County, serving both saltwater & freshwater tanks.</StyledP>
+                    <StyledP>We are an Aquarium service out of Orange County, serving both saltwater & freshwater tanks.</StyledP>
                     <StyledP>We provide setups, design, and maintenance for your unique tank.</StyledP>
                     <StyledP>We strive for excellent customer service, building a trustworthy relationship with our clients, 
                     and always being on call 24/7 for questions & emergencies.</StyledP>
