@@ -3,6 +3,7 @@ import { VideoComponent } from "./Video.tsx";
 
 import useWindowDimensions from './windowDimension';
 import mainImg from '../images/mainPage.jpg'; 
+import background1 from '../images/testimonial bkgrd 1.jpg';
 
 const Breakpoint = css`
     font-size: 40px;
@@ -23,6 +24,8 @@ const GalleryContainer = styled('div')`
     min-height: 100vh;
     overflow: hidden;
     padding-top: 100px;
+    background-image: url("${background1}");
+    background-size: 100%;
 
     @media (max-width: 670px) {
         padding-top: 150px;
@@ -48,6 +51,7 @@ const Row = styled('div')`
 
 const GalleryImage = styled('img')`
     width: 45%;
+    border: 5px solid black;
 
     @media (max-width: 670px) {
         width: 90%;
@@ -58,6 +62,7 @@ const GalleryImage = styled('img')`
 const StepsImage = styled('img')`
     width: 23%;
     object-fit: cover;
+    border: 5px solid black;
 
     @media (max-width: 670px) {
         width: 90%;

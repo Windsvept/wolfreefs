@@ -89,6 +89,9 @@ const Header = () => {
     return (
 
         <StyledHeader>
+            <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+            <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"></link>
             <NavLink activeClass="active" smooth spy to="Home" href="#Home">
                 <MainLogo src={wolfReefLogo} alt="wolfReefLogo" />
             </NavLink>

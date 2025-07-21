@@ -3,7 +3,16 @@ import { VideoComponent } from "./Video.tsx";
 import useWindowDimensions from './windowDimension';
 import testimonials from '../json/testimonials.json';
 
- const TestimonialContainer = styled('div')`
+import background1 from '../images/testimonial bkgrd 1.jpg';
+import background2 from '../images/testimonial bkgrd 2.jpg';
+import background3 from '../images/testimonial bkgrd 3.jpg';
+let backgrounds = {
+    background1,
+    background2,
+    background3
+}
+
+const TestimonialContainer = styled('div')`
     display: flex;
     flex-direction: row;
     margin: 20px;
@@ -26,14 +35,28 @@ import testimonials from '../json/testimonials.json';
     }
 `;
 
-const TestimonialText = styled('div')`
-    margin: 20px;
+const TesitmonialBody = styled('div')`
+    position: relative;
     width: 60%;
+    margin: auto;
+
+    @media (max-width: 670px) {
+        width: calc(100% - 20px);
+        margin: 10px;
+    }
+`;
+
+const TestimonialText = styled('div')`
+    // margin: 20px;
     text-wrap: balance;
     @media (max-width: 670px) {
-        width: calc(100% - 40px);
+        // width: calc(100% - 40px);
         text-align: start;
     }
+    position absolute;
+    z-index: 5;
+    position: relative;
+    color: black;
 `;
 
 const TestimonialTextBy = styled('p')`
@@ -67,6 +90,18 @@ const VideoCssSmall = {
     "margin": "10px auto"
 };
 
+const TestimonialBackground = styled('img')`
+    position absolute;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-radius: 5px;
+    opacity: 0.8;
+    z-index: 1;
+`;
+
 const Testimonial = ({data}) => {
 
     let imgSrc = 'https://r2.wolfreefs.com/'+ data.media;
@@ -80,10 +115,13 @@ const Testimonial = ({data}) => {
                 : 
                 <VideoComponent src={imgSrc} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall}/>
             }
-            <TestimonialText>
-                {data.text} 
-            <TestimonialTextBy>-{data.writer}</TestimonialTextBy>
-            </TestimonialText>
+            <TesitmonialBody background={backgrounds[data.background]}>
+                {/* <TestimonialBackground src={backgrounds[data.background]}></TestimonialBackground> */}
+                <TestimonialText>
+                    {data.text} 
+                <TestimonialTextBy>-{data.writer}</TestimonialTextBy>
+                </TestimonialText>
+            </TesitmonialBody>
             
         </TestimonialContainer>
     )
@@ -108,6 +146,8 @@ const TestimonialsContainer = styled('div')`
     min-height: 100vh;
     overflow: hidden;
     padding-top: 100px;
+    background-image: url("${background1}");
+    background-size: 100%;
 
     @media (max-width: 670px) {
         padding-top: 150px;

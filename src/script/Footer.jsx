@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import background1 from '../images/testimonial bkgrd 1.jpg';
 
 const Breakpoint = css`
     font-size: 40px;
@@ -18,7 +19,8 @@ const FooterContainer = styled('div')`
     flex-direction: column;
     overflow: hidden;
     min-height: 50px;
-
+    background-image: url("${background1}");
+    background-size: 100%;
     ${Breakpoint}
 `;
 
@@ -31,6 +33,7 @@ const StyledFooter = styled('footer')`
     flex-direction: column;
     width: 100%;
     padding-bottom: 20px;
+    color: black;
 `;
 
 export const Footer = () => {

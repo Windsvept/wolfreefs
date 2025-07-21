@@ -4,6 +4,10 @@ import { VideoComponent } from "./Video.tsx";
 import useWindowDimensions from './windowDimension';
 
 import mainImg from '../images/mainPage.jpg'; 
+import background1 from '../images/testimonial bkgrd 1.jpg';
+import background2 from '../images/testimonial bkgrd 2.jpg';
+import background3 from '../images/testimonial bkgrd 3.jpg';
+
 
 const Breakpoint = css`
     font-size: 40px;
@@ -41,6 +45,10 @@ const AboutUsContainer = styled('div')`
     min-height: 100vh;
     overflow: hidden;
     flex-direction: column;
+    background-image: url("${background1}");
+    background-size: 100%;
+    color: black;
+    // text-shadow: 2px 2px white;
 `;
 
 const AboutUsImage = styled('img')`
@@ -80,8 +88,7 @@ const Contact = styled('p')`
 
 const StyledLink = styled('a')`
     text-decoration: none;
-    color: #6fc2ff;
-    text-shadow: #000000d1 4px 2px 3px;
+    color: black;
 `;
 
 const SocialLinks = styled('div')`

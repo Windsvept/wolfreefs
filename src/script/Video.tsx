@@ -54,6 +54,8 @@ export const VideoComponent = ({
     <span
       ref={targetRef as any}
       style={{
+        border: "5px solid black",
+        margin: "2px",
         position: "relative",
         minHeight: "50px",
         height: "100%",
@@ -72,7 +74,7 @@ export const VideoComponent = ({
           objectFit: "contain",
           display: "block",
           width: "100%",
-          height: "100%"
+          height: "100%",
         }}
       >
         <source src={src} type="video/mp4" />
