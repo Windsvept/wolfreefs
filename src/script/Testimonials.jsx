@@ -31,7 +31,7 @@ const TestimonialContainer = styled('div')`
         width: 95%;
         margin-right: -95%;
         margin-left: 10px;
-        border-top: 1px solid white;
+        // border-top: 1px solid white;
     }
 `;
 

@@ -7,7 +7,7 @@ import mainImg from '../images/mainPage.jpg';
 import background1 from '../images/testimonial bkgrd 1.jpg';
 import background2 from '../images/testimonial bkgrd 2.jpg';
 import background3 from '../images/testimonial bkgrd 3.jpg';
-
+import wolfFam from '../images/wolfFam.jpg';
 
 const Breakpoint = css`
     font-size: 40px;
@@ -53,6 +53,9 @@ const AboutUsContainer = styled('div')`
 
 const AboutUsImage = styled('img')`
     object-position: top;
+    width: 30%;
+    margin: auto;
+    border: 5px solid black;
 
     @media (max-width: 760px) {
         width: 90%;
@@ -106,6 +109,7 @@ export const AboutUs = () => {
                 <VideoComponent src={"https://r2.wolfreefs.com/CarlaTestimonial.mp4"} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall}/>   
    
                 <AboutUsDesc>
+                    <AboutUsImage src={wolfFam} alt="Wolf Family" />
                     <StyledP>We are an Aquarium service out of Orange County, serving both saltwater & freshwater tanks.</StyledP>
                     <StyledP>We provide setups, design, and maintenance for your unique tank.</StyledP>
                     <StyledP>We strive for excellent customer service, building a trustworthy relationship with our clients, 

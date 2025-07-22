@@ -4,6 +4,7 @@ import { VideoComponent } from "./Video.tsx";
 import useWindowDimensions from './windowDimension';
 import mainImg from '../images/mainPage.jpg'; 
 import background1 from '../images/testimonial bkgrd 1.jpg';
+import galleryImg from '../images/gallery_img.jpg';
 
 const Breakpoint = css`
     font-size: 40px;
@@ -49,14 +50,39 @@ const Row = styled('div')`
     }
 `;
 
-const GalleryImage = styled('img')`
-    width: 45%;
+const GalleryImageBorder = styled('span')`
     border: 5px solid black;
+    margin: 10px auto;
+    position: relative;
+    min-height: 50px;
+    height: 100%;
+    width: 45%;
 
     @media (max-width: 670px) {
         width: 90%;
         margin: 10px auto;
     }
+`;
+
+const GalleryImageBorderFull  = styled('span')`
+    border: 5px solid black;
+    margin: 10px auto;
+    position: relative;
+    min-height: 50px;
+    height: 100%;
+    width: calc(100% - 90px);
+
+    @media (max-width: 670px) {
+        width: 90%;
+        margin: 10px auto;
+    }
+`;
+
+const GalleryImage = styled('img')`
+    object-fit: contain;
+    display: block;
+    width: 100%;
+    height: 100%;
 `;
 
 const StepsImage = styled('img')`
@@ -97,19 +123,29 @@ export const Gallery = () => {
     return (
         <GalleryContainer id="Gallery">
             <Row>
-                <GalleryImage src={mainImg} alt="Aquarium1" />
-                <GalleryImage src={img1} alt="Aquarium2" />
+                <GalleryImageBorder>
+                    <GalleryImage src={mainImg} alt="Aquarium1" />
+                </GalleryImageBorder>
+                <GalleryImageBorder>
+                    <GalleryImage src={img1} alt="Aquarium2" />
+                </GalleryImageBorder>
             </Row>
-            {/* <Row>
-                <VideoComponent src={vid4_1} style={VideoCssSmall}/>
-            </Row> */}
             <Row>
                 <VideoComponent src={vid4_2} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall}/>
                 <VideoComponent src={vid5} style={windowWidth > 760 ? VideoCssBig : VideoCssSmall} />
             </Row>
             <Row>
-                <GalleryImage src={img2} alt="Aquarium3" />
-                <GalleryImage src={img3} alt="Aquarium4" />
+                <GalleryImageBorderFull>
+                    <GalleryImage src={galleryImg} alt="Aquarium2" />
+                </GalleryImageBorderFull>
+            </Row>
+            <Row>
+                <GalleryImageBorder>
+                    <GalleryImage src={img2} alt="Aquarium3" />
+                </GalleryImageBorder>
+                <GalleryImageBorder>
+                    <GalleryImage src={img3} alt="Aquarium4" />
+                </GalleryImageBorder>
             </Row>
             <Row>
                 <StepsImage src={step1} alt="Reef Tank Step 1" />
