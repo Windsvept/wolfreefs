@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 
 import { Container, Eyebrow, Button, ScrollButton, PHONE_DISPLAY, PHONE_LINK } from './ui';
@@ -122,10 +123,27 @@ const ScrollHint = styled('div')`
 `;
 
 export const Landing = () => {
+    const videoRef = useRef(null);
+
+    // iPhone Safari only autoplays when the video is muted as an attribute,
+    // which React doesn't add on its own, so set it and start playback here.
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.setAttribute("muted", "");
+        const attempt = video.play();
+        if (attempt && attempt.catch) {
+            // Blocked (e.g. Low Power Mode): the first frame still shows as a still image
+            attempt.catch(() => {});
+        }
+    }, []);
 
     return (
         <LandingContainer id="Home">
             <MainVideo
+                ref={videoRef}
                 autoPlay
                 loop
                 muted
@@ -133,7 +151,7 @@ export const Landing = () => {
                 controls={false}
                 aria-label="Reef aquarium maintained by Wolf Aquariums"
             >
-                <source src="https://r2.wolfreefs.com/background.mp4" type="video/mp4"></source>
+                <source src="https://r2.wolfreefs.com/background.mp4#t=0.001" type="video/mp4"></source>
             </MainVideo>
             <Shade />
             <Content>
