@@ -7,12 +7,14 @@ type VideoComponentProps = {
   poster?: string;
   alt?: string;
   style?: CSSProperties;
+  videoStyle?: CSSProperties;
 };
 
 export const VideoComponent = ({
   src,
   poster,
   style,
+  videoStyle,
   alt,
 }: VideoComponentProps) => {
   const { isVisible, targetRef } = useIsVisible(
@@ -67,7 +69,7 @@ export const VideoComponent = ({
         loop
         muted
         autoPlay={false}
-        preload="auto"
+        preload="metadata"
         playsInline
         aria-label={alt}
         style={{
@@ -75,6 +77,7 @@ export const VideoComponent = ({
           display: "block",
           width: "100%",
           height: "100%",
+          ...videoStyle,
         }}
       >
         <source src={src} type="video/mp4" />
