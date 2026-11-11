@@ -1,6 +1,6 @@
 {
-  "short_name": "Wolf Reefs",
-  "name": "Wolf Reefs",
+  "short_name": "Wolf Aquariums",
+  "name": "Wolf Aquariums",
   "icons": [
     {
       "src": "Wolf-Reefs-logo.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#040418",
   "background_color": "#ffffff"
 }
