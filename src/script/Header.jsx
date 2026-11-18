@@ -14,15 +14,13 @@ const StyledHeader = styled('header')`
     left: 0;
     right: 0;
     z-index: 100;
-    transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
     border-bottom: 1px solid transparent;
-    background: linear-gradient(180deg, rgba(4, 4, 24, 0.6) 0%, rgba(4, 4, 24, 0) 100%);
+    background: linear-gradient(180deg, rgba(3, 32, 56, 0.6) 0%, rgba(3, 32, 56, 0) 100%);
 
     ${({ $scrolled }) => $scrolled && css`
-        background: rgba(4, 4, 24, 0.72);
+        background: rgba(6, 48, 79, 0.94);
         border-bottom-color: var(--border);
-        backdrop-filter: blur(16px) saturate(140%);
-        -webkit-backdrop-filter: blur(16px) saturate(140%);
     `}
 `;
 
@@ -82,7 +80,8 @@ const NavLink = styled(Link)`
     display: inline-block;
     padding: 6px 0;
     color: var(--text);
-    font-size: 0.95rem;
+    font-family: var(--font-display);
+    font-size: 1.02rem;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
@@ -94,8 +93,8 @@ const NavLink = styled(Link)`
         left: 0;
         right: 0;
         bottom: 0;
-        height: 2px;
-        border-radius: 2px;
+        height: 3px;
+        border-radius: 3px;
         background: var(--accent);
         transform: scaleX(0);
         transform-origin: left;

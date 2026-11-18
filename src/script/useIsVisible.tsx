@@ -29,13 +29,14 @@ export const useIsVisible = (
       });
     }, optionsRef.current);
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
+    const target = targetRef.current;
+    if (target) {
+      observer.observe(target);
     }
 
     return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
+      if (target) {
+        observer.unobserve(target);
       }
       observer.disconnect(); // Clean up the IntersectionObserver
     };

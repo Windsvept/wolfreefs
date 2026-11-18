@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { SocialIcon } from 'react-social-icons';
 import { VideoComponent } from "./Video.tsx";
 import {
-    Container, Section, SectionHeader, Eyebrow, Card, Button, Reveal,
+    Container, Section, SectionHeader, Card, Button, Reveal,
     PHONE_DISPLAY, PHONE_LINK, EMAIL, YELP_URL, FACEBOOK_URL,
 } from './ui';
 
@@ -11,7 +11,7 @@ import wolfFam from '../images/wolfFam.jpg';
 const Intro = styled('div')`
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(32px, 6vw, 80px);
+    gap: clamp(32px, 6vw, 88px);
     align-items: center;
 
     @media (max-width: 860px) {
@@ -27,121 +27,207 @@ const IntroText = styled('div')`
     }
 
     p:first-of-type {
-        font-size: 1.3rem;
+        font-family: var(--font-display);
+        font-size: clamp(1.35rem, 2vw, 1.6rem);
+        font-weight: 500;
+        line-height: 1.35;
         color: var(--text);
     }
 `;
 
-const Highlights = styled('ul')`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 28px 0 0;
-    padding: 0;
-    list-style: none;
 
-    li {
-        padding: 8px 16px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        background: var(--surface);
-        font-size: 0.9rem;
-        font-weight: 500;
-    }
-`;
-
-const PhotoFrame = styled('figure')`
+// Photo shown inside a little aquarium: black rim on top, glass edges, sand along the bottom
+const PhotoTank = styled('figure')`
     position: relative;
     margin: 0;
+    padding: 14px 14px 0;
+    border: 2px solid rgba(190, 240, 255, 0.35);
+    border-top: 0;
+    border-radius: 6px 6px 20px 20px;
+    background: linear-gradient(180deg, rgba(143, 240, 255, 0.14), rgba(10, 74, 114, 0.25));
+    box-shadow: var(--glass-shine), 0 30px 60px -28px rgba(0, 10, 25, 0.9);
 
     &::before {
         content: "";
         position: absolute;
-        inset: -14px 14px 14px -14px;
-        border-radius: calc(var(--radius) + 6px);
-        background: linear-gradient(135deg, rgba(111, 194, 255, 0.35), rgba(79, 216, 196, 0.15));
-        z-index: 0;
+        top: -8px;
+        left: -6px;
+        right: -6px;
+        height: 12px;
+        border-radius: 4px;
+        background: var(--rim);
+        box-shadow: 0 2px 0 rgba(255, 255, 255, 0.08);
     }
 
     @media (max-width: 860px) {
-        max-width: 460px;
-        margin: 12px auto 0;
+        max-width: 440px;
+        margin: 24px auto 0;
     }
 `;
 
 const AboutUsImage = styled('img')`
-    position: relative;
-    z-index: 1;
     display: block;
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: top;
-    border-radius: var(--radius);
-    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
 `;
 
-const Caption = styled('figcaption')`
-    position: relative;
-    z-index: 1;
-    margin-top: 14px;
-    font-size: 0.9rem;
-    color: var(--muted);
-    text-align: center;
+const SAND = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 30' preserveAspectRatio='none'%3E%3Cpath d='M0 14 C60 4 120 22 200 12 S340 4 400 14 V30 H0Z' fill='%23e8d3a6'/%3E%3Cpath d='M0 20 C80 12 150 28 230 18 S350 14 400 20 V30 H0Z' fill='%23cfb27a'/%3E%3C/svg%3E\")";
+
+const SandBed = styled('div')`
+    height: 34px;
+    margin: 12px -14px 0;
+    border-radius: 0 0 18px 18px;
+    background: ${SAND} bottom / 100% 100% no-repeat;
 `;
 
+// Two wide tanks side by side (stacked on smaller screens)
 const Services = styled('div')`
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: clamp(64px, 9vw, 112px);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: clamp(72px, 10vw, 120px);
 
-    @media (max-width: 1000px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 560px) {
+    @media (max-width: 900px) {
         grid-template-columns: 1fr;
     }
 `;
 
-const ServiceCard = styled(Card)`
+// The two service cards are drawn as two different aquariums:
+// a reef tank (rimless, hanging LED, corals on white sand) and a planted
+// freshwater tank (black hood, green water, gravel, driftwood and plants).
+const Tank = styled('div')`
+    position: relative;
     height: 100%;
-    padding: 28px;
+    padding-top: ${({ $kind }) => ($kind === 'reef' ? '46px' : '14px')};
     box-sizing: border-box;
-    transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.3s ease;
 
     &:hover {
-        transform: translateY(-4px);
-        background: var(--surface-hover);
-        border-color: rgba(111, 194, 255, 0.35);
+        transform: translateY(-6px);
+    }
+`;
+
+// Reef: a dark LED bar hanging on two cables above the open-top tank
+const ReefLight = styled('div')`
+    position: absolute;
+    top: 0;
+    left: 26%;
+    right: 26%;
+    height: 34px;
+    z-index: 2;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 16%;
+        right: 16%;
+        height: 26px;
+        border-left: 1px solid rgba(220, 240, 255, 0.35);
+        border-right: 1px solid rgba(220, 240, 255, 0.35);
     }
 
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 9px;
+        border-radius: 5px;
+        background: var(--rim);
+        box-shadow: 0 8px 22px 2px rgba(140, 150, 255, 0.6);
+    }
+`;
+
+// Freshwater: a black hood with a lip sitting on top of the glass
+const Hood = styled('div')`
+    position: absolute;
+    top: 0;
+    left: -6px;
+    right: -6px;
+    height: 18px;
+    z-index: 2;
+    border-radius: 5px 5px 3px 3px;
+    background: linear-gradient(180deg, #1c2a35, var(--rim));
+    box-shadow: 0 3px 0 rgba(255, 255, 255, 0.06);
+`;
+
+const Water = styled('div')`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: clamp(400px, 34vw, 470px);
+    height: 100%;
+    box-sizing: border-box;
+    padding: 36px clamp(22px, 3vw, 40px) 0;
+    overflow: hidden;
+    border: 2px solid rgba(200, 240, 255, ${({ $kind }) => ($kind === 'reef' ? 0.42 : 0.3)});
+    border-top-width: ${({ $kind }) => ($kind === 'reef' ? '2px' : '0')};
+    border-radius: ${({ $kind }) => ($kind === 'reef' ? '6px' : '0 0 12px 12px')};
+    background: ${({ $kind }) => ($kind === 'reef'
+        ? `radial-gradient(ellipse 70% 55% at 50% 0%, rgba(160, 165, 255, 0.35), transparent 70%),
+           linear-gradient(180deg, rgba(100, 130, 255, 0.22) 0%, rgba(40, 30, 120, 0.5) 100%)`
+        : `radial-gradient(ellipse 80% 45% at 50% 0%, rgba(255, 244, 210, 0.18), transparent 70%),
+           linear-gradient(180deg, rgba(150, 220, 170, 0.2) 0%, rgba(18, 70, 50, 0.55) 100%)`)};
+    box-shadow: var(--glass-shine), 0 30px 60px -32px rgba(0, 10, 25, 0.9);
+
     h3 {
-        margin: 0 0 10px;
-        font-size: 1.5rem;
+        position: relative;
+        z-index: 1;
+        margin: 0 0 12px;
+        font-size: clamp(1.5rem, 2.2vw, 1.9rem);
     }
 
     p {
+        position: relative;
+        z-index: 1;
+        max-width: 520px;
         margin: 0;
-        color: var(--muted);
-        font-size: 0.98rem;
+        color: rgba(242, 251, 255, 0.85);
+        font-size: 1.05rem;
     }
 `;
 
-const ServiceNumber = styled('span')`
-    display: inline-block;
-    margin-bottom: 18px;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--accent);
+// The sand or gravel bed along the bottom of each tank
+const Scene = styled('svg')`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* Keeps the bed's own proportions so nothing gets cropped on narrow screens */
+    height: auto;
+    aspect-ratio: 10 / 3;
+    pointer-events: none;
 `;
+
+// Empty tanks: just the sand (reef) or gravel (freshwater) along the bottom
+const ReefScene = () => (
+    <Scene viewBox="0 0 600 180" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <path d="M0 160 C100 148 200 170 300 158 S500 148 600 160 V180 H0Z" fill="#efe2c4" />
+        <path d="M0 168 C120 160 240 176 360 166 S540 162 600 168 V180 H0Z" fill="#dccaa0" />
+    </Scene>
+);
+
+const FreshScene = () => (
+    <Scene viewBox="0 0 600 180" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <path d="M0 162 C120 154 240 170 360 160 S540 156 600 162 V180 H0Z" fill="#4a3b2c" />
+        <path d="M0 170 C140 164 280 176 420 168 S560 166 600 170 V180 H0Z" fill="#3a2e22" />
+        <g fill="#8a7458" opacity="0.6">
+            <circle cx="60" cy="168" r="2" /><circle cx="150" cy="172" r="2" /><circle cx="250" cy="166" r="2" />
+            <circle cx="340" cy="172" r="2" /><circle cx="450" cy="170" r="2" /><circle cx="540" cy="168" r="2" />
+        </g>
+    </Scene>
+);
 
 const ContactRow = styled('div')`
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;
     gap: 24px;
-    margin-top: 24px;
+    margin-top: clamp(56px, 8vw, 96px);
     align-items: stretch;
 
     @media (max-width: 860px) {
@@ -153,7 +239,9 @@ const VideoCard = styled(Card)`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 14px;
     overflow: hidden;
 `;
 
@@ -171,24 +259,30 @@ const VideoCss = {
     height: "auto",
     maxHeight: "70vh",
     objectFit: "cover",
-    borderRadius: "14px",
+    borderRadius: "12px",
 };
 
 const ContactCard = styled(Card)`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(28px, 4vw, 48px);
+    height: 100%;
+    box-sizing: border-box;
+    padding: clamp(28px, 4vw, 52px);
+    overflow: hidden;
     background:
-        radial-gradient(600px 300px at 100% 0%, rgba(111, 194, 255, 0.18), transparent 70%),
+        radial-gradient(500px 260px at 100% 0%, rgba(255, 133, 82, 0.22), transparent 70%),
         var(--surface);
 
     h3 {
+        position: relative;
         margin: 0 0 12px;
-        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        font-size: clamp(1.9rem, 3.2vw, 2.6rem);
     }
 
     p {
+        position: relative;
         margin: 0;
         color: var(--muted);
         font-size: 1.05rem;
@@ -196,6 +290,7 @@ const ContactCard = styled(Card)`
 `;
 
 const ContactActions = styled('div')`
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
@@ -203,6 +298,7 @@ const ContactActions = styled('div')`
 `;
 
 const SocialLinks = styled('div')`
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -210,14 +306,21 @@ const SocialLinks = styled('div')`
     padding-top: 24px;
     border-top: 1px solid var(--border);
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 `;
 
-const services = [
-    { title: 'New tank setup', text: 'Setup of new saltwater and freshwater fish tanks, ready for healthy fish and corals.' },
-    { title: 'Custom design', text: 'Design of saltwater and freshwater aquariums made for your space and your goals.' },
-    { title: 'Reef care', text: 'Weekly maintenance, cleaning, and health checks for saltwater and reef aquariums.' },
-    { title: 'Freshwater care', text: 'Weekly maintenance, cleaning, and health checks for freshwater aquariums.' },
+// Two tanks: setup & design in one, ongoing care in the other
+const tanks = [
+    {
+        kind: 'reef',
+        title: 'New Tank Setup & Custom Design',
+        text: 'Setup and design of new saltwater and freshwater aquariums, made for your space and your goals and ready for healthy fish and corals.',
+    },
+    {
+        kind: 'fresh',
+        title: 'Reef & Freshwater Care',
+        text: 'Weekly maintenance, cleaning, and health checks for saltwater, reef, and freshwater aquariums.',
+    },
 ];
 
 export const AboutUs = () => {
@@ -228,8 +331,7 @@ export const AboutUs = () => {
                     <Reveal>
                         <SectionHeader
                             align="left"
-                            eyebrow="About Us"
-                            title="Orange County Aquarium Setup, Design & Maintenance"
+                            title={<>Orange County Aquarium Setup, Design &amp; <span>Maintenance</span></>}
                         />
                         <IntroText>
                             <p>We are an Aquarium service out of Orange County, serving both saltwater & freshwater tanks.</p>
@@ -237,28 +339,26 @@ export const AboutUs = () => {
                             <p>We strive for excellent customer service, building a trustworthy relationship with our clients,
                             and always being on call 24/7 for questions & emergencies.</p>
                         </IntroText>
-                        <Highlights>
-                            <li>Saltwater & reef</li>
-                            <li>Freshwater</li>
-                            <li>On call 24/7</li>
-                        </Highlights>
                     </Reveal>
                     <Reveal delay={150}>
-                        <PhotoFrame>
+                        <PhotoTank>
                             <AboutUsImage src={wolfFam} alt="The Wolf family, owners of Wolf Aquariums" loading="lazy" />
-                            <Caption>The Wolf family</Caption>
-                        </PhotoFrame>
+                            <SandBed aria-hidden="true" />
+                        </PhotoTank>
                     </Reveal>
                 </Intro>
 
                 <Services>
-                    {services.map((service, i) => (
-                        <Reveal key={service.title} delay={i * 100}>
-                            <ServiceCard>
-                                <ServiceNumber>0{i + 1}</ServiceNumber>
-                                <h3>{service.title}</h3>
-                                <p>{service.text}</p>
-                            </ServiceCard>
+                    {tanks.map((tank, t) => (
+                        <Reveal key={tank.title} delay={t * 120}>
+                            <Tank $kind={tank.kind}>
+                                {tank.kind === 'reef' ? <ReefLight aria-hidden="true" /> : <Hood aria-hidden="true" />}
+                                <Water $kind={tank.kind}>
+                                    <h3>{tank.title}</h3>
+                                    <p>{tank.text}</p>
+                                    {tank.kind === 'reef' ? <ReefScene /> : <FreshScene />}
+                                </Water>
+                            </Tank>
                         </Reveal>
                     ))}
                 </Services>
@@ -270,8 +370,7 @@ export const AboutUs = () => {
                         </VideoCard>
                     </Reveal>
                     <Reveal delay={150}>
-                        <ContactCard style={{ height: '100%', boxSizing: 'border-box' }}>
-                            <Eyebrow>Get in touch</Eyebrow>
+                        <ContactCard>
                             <h3>Ready for your dream aquarium?</h3>
                             <p>Call or email us about a new setup, a redesign, or weekly care. We're on call 24/7 for questions & emergencies.</p>
                             <ContactActions>

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 
-import { Container, Eyebrow, Button, ScrollButton, PHONE_DISPLAY, PHONE_LINK } from './ui';
+import { Container, Button, ScrollButton, PHONE_DISPLAY, PHONE_LINK } from './ui';
 
 const LandingContainer = styled('section')`
     position: relative;
@@ -9,9 +9,25 @@ const LandingContainer = styled('section')`
     align-items: flex-end;
     height: 100vh;
     height: 100svh;
-    min-height: 560px;
+    min-height: 600px;
+`;
+
+// The bottom edge of the video is cut into a wave, like the water's surface.
+// It stays still on purpose: animating a cut-out makes the browser redraw the whole video each frame.
+const WAVE = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V32C1320 64 1200 64 1080 32C960 0 840 0 720 32C600 64 480 64 360 32C240 0 120 0 0 32Z'/%3E%3C/svg%3E\")";
+
+const Media = styled('div')`
+    position: absolute;
+    inset: 0;
     overflow: hidden;
-    background: var(--bg);
+    -webkit-mask-image: linear-gradient(#000, #000), ${WAVE};
+    mask-image: linear-gradient(#000, #000), ${WAVE};
+    -webkit-mask-size: 100% calc(100% - 63px), 1440px 64px;
+    mask-size: 100% calc(100% - 63px), 1440px 64px;
+    -webkit-mask-repeat: no-repeat, repeat-x;
+    mask-repeat: no-repeat, repeat-x;
+    -webkit-mask-position: 0 0, 0 100%;
+    mask-position: 0 0, 0 100%;
 `;
 
 // Fills the screen at any shape, cropping the edges instead of leaving gaps
@@ -24,19 +40,17 @@ const MainVideo = styled('video')`
     object-position: center;
 `;
 
-// Darkens the bottom-left so the headline stays readable over the video
+// Blue-green tint plus a darker lower left so the headline stays readable
 const Shade = styled('div')`
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, rgba(4, 4, 24, 0.25) 0%, rgba(4, 4, 24, 0) 35%, rgba(4, 4, 24, 0.55) 70%, var(--bg) 100%),
-        linear-gradient(90deg, rgba(4, 4, 24, 0.55) 0%, rgba(4, 4, 24, 0) 60%);
+        linear-gradient(180deg, rgba(4, 40, 70, 0.3) 0%, rgba(4, 40, 70, 0) 35%, rgba(4, 40, 70, 0.55) 75%, rgba(8, 70, 105, 0.85) 100%),
+        linear-gradient(90deg, rgba(3, 30, 55, 0.6) 0%, rgba(3, 30, 55, 0) 60%);
 `;
 
 const Content = styled(Container)`
-    position: relative;
-    z-index: 1;
-    padding-bottom: clamp(72px, 14vh, 140px);
+    padding-bottom: clamp(100px, 17vh, 170px);
 `;
 
 const fadeUp = keyframes`
@@ -45,7 +59,7 @@ const fadeUp = keyframes`
 `;
 
 const Copy = styled('div')`
-    max-width: 680px;
+    max-width: 760px;
     animation: ${fadeUp} 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 
     @media (prefers-reduced-motion: reduce) {
@@ -55,25 +69,24 @@ const Copy = styled('div')`
 
 const Headline = styled('h1')`
     margin: 0;
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    line-height: 0.98;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
+    font-size: clamp(3rem, 7.6vw, 6.4rem);
+    font-weight: 600;
+    line-height: 1;
+    text-shadow: 0 4px 30px rgba(0, 20, 40, 0.5);
 
     span {
         display: block;
-        background: linear-gradient(90deg, var(--accent), var(--accent-2));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: none;
+        color: var(--accent);
+        text-shadow: 0 0 40px rgba(143, 240, 255, 0.45), 0 4px 30px rgba(0, 20, 40, 0.5);
     }
 `;
 
 const Tagline = styled('p')`
-    margin: 20px 0 0;
-    max-width: 520px;
+    max-width: 540px;
+    margin: 22px 0 0;
     font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-    color: rgba(238, 242, 255, 0.88);
+    color: rgba(242, 251, 255, 0.92);
+    text-shadow: 0 2px 12px rgba(0, 20, 40, 0.5);
 `;
 
 const Actions = styled('div')`
@@ -81,45 +94,6 @@ const Actions = styled('div')`
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 32px;
-`;
-
-const bob = keyframes`
-    0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
-    50% { transform: translate(-50%, 8px); opacity: 1; }
-`;
-
-const ScrollHint = styled('div')`
-    position: absolute;
-    left: 50%;
-    bottom: 24px;
-    z-index: 1;
-    width: 26px;
-    height: 42px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 14px;
-    box-sizing: border-box;
-    transform: translateX(-50%);
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 8px;
-        left: 50%;
-        width: 4px;
-        height: 8px;
-        margin-left: -2px;
-        border-radius: 2px;
-        background: rgba(255, 255, 255, 0.8);
-        animation: ${bob} 1.8s ease-in-out infinite;
-    }
-
-    @media (max-height: 640px) {
-        display: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        &::after { animation: none; }
-    }
 `;
 
 export const Landing = () => {
@@ -142,21 +116,22 @@ export const Landing = () => {
 
     return (
         <LandingContainer id="Home">
-            <MainVideo
-                ref={videoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls={false}
-                aria-label="Reef aquarium maintained by Wolf Aquariums"
-            >
-                <source src="https://r2.wolfreefs.com/background.mp4#t=0.001" type="video/mp4"></source>
-            </MainVideo>
-            <Shade />
+            <Media>
+                <MainVideo
+                    ref={videoRef}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls={false}
+                    aria-label="Reef aquarium maintained by Wolf Aquariums"
+                >
+                    <source src="https://r2.wolfreefs.com/background.mp4#t=0.001" type="video/mp4"></source>
+                </MainVideo>
+                <Shade />
+            </Media>
             <Content>
                 <Copy>
-                    <Eyebrow>Orange County Aquarium Service</Eyebrow>
                     <Headline>
                         Create Your <span>Dream Aquarium</span>
                     </Headline>
@@ -169,7 +144,6 @@ export const Landing = () => {
                     </Actions>
                 </Copy>
             </Content>
-            <ScrollHint aria-hidden="true" />
         </LandingContainer>
     )
 }

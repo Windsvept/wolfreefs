@@ -118,7 +118,7 @@ const Avatar = styled('span')`
     border-radius: 50%;
     flex-shrink: 0;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #04122a;
+    color: #05304f;
     font-family: var(--font-display);
     font-size: 1.2rem;
 `;
@@ -144,10 +144,7 @@ const Testimonial = ({ data, reverse }) => {
                 </TestimonialText>
                 <TestimonialTextBy>
                     <Avatar aria-hidden="true">{data.writer.charAt(0)}</Avatar>
-                    <span>
-                        {data.writer}
-                        <small>Wolf Aquariums client</small>
-                    </span>
+                    <span>{data.writer}</span>
                 </TestimonialTextBy>
             </TestimonialBody>
         </TestimonialCard>
@@ -161,9 +158,7 @@ export const Testimonials = () => {
             <Container>
                 <Reveal>
                     <SectionHeader
-                        eyebrow="Testimonials"
                         title="What Our Clients Say"
-                        lead="Real tanks, real owners. Here's what working with us looks like."
                     />
                 </Reveal>
                 <List>
