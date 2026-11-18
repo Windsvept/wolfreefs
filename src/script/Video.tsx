@@ -1,6 +1,7 @@
 import React, { CSSProperties, useCallback, useEffect, useRef, useState } from "react";
 
-import { useIsVisible } from "./useIsVisible.tsx";
+// How much of a video must be on screen before it starts playing
+const VISIBLE_SHARE = 0.8;
 
 type VideoComponentProps = {
   src: string;
@@ -8,6 +9,8 @@ type VideoComponentProps = {
   alt?: string;
   style?: CSSProperties;
   videoStyle?: CSSProperties;
+  // false: never start on its own; just show the first frame (e.g. gallery tiles)
+  autoPlayWhenVisible?: boolean;
 };
 
 export const VideoComponent = ({
@@ -16,15 +19,25 @@ export const VideoComponent = ({
   style,
   videoStyle,
   alt,
+  autoPlayWhenVisible = true,
 }: VideoComponentProps) => {
-  const { isVisible, targetRef } = useIsVisible(
-    {
-      root: null,
-      rootMargin: "-120px",
-      threshold: 0.1,
-    },
-    false,
-  );
+  const targetRef = useRef<HTMLSpanElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Counts as "on screen" once 80% of the video is visible. A video taller than the
+  // screen can never be 80% visible, so for those it's enough to fill 80% of the screen.
+  useEffect(() => {
+    const target = targetRef.current;
+    if (!target) return;
+    const steps = Array.from({ length: 21 }, (_, i) => i / 20);
+    const observer = new IntersectionObserver(([entry]) => {
+      const screenHeight = entry.rootBounds?.height || window.innerHeight;
+      const fillsScreen = entry.intersectionRect.height >= screenHeight * VISIBLE_SHARE;
+      setIsVisible(entry.intersectionRatio >= VISIBLE_SHARE - 0.001 || fillsScreen);
+    }, { threshold: steps });
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   // True when the browser refused to start the video on its own (e.g. iPhone Low Power Mode)
@@ -62,12 +75,12 @@ export const VideoComponent = ({
   }, []);
 
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && autoPlayWhenVisible) {
       startVideoOnMouseMove();
     } else {
       stopVideoOnMove();
     }
-  }, [isVisible, startVideoOnMouseMove, stopVideoOnMove]);
+  }, [isVisible, autoPlayWhenVisible, startVideoOnMouseMove, stopVideoOnMove]);
 
   return (
     <span

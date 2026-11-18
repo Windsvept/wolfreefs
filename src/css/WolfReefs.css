@@ -1,40 +1,55 @@
 :root {
-  --bg: #040418;
-  --bg-raised: #0a0c2a;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-hover: rgba(255, 255, 255, 0.07);
-  --border: rgba(255, 255, 255, 0.1);
-  --text: #eef2ff;
-  --muted: #a9b2cf;
-  --accent: #6fc2ff;
-  --accent-2: #4fd8c4;
-  --radius: 20px;
+  /* Water: bright near the surface, deeper blue further down the page */
+  --water-surface: #0e6f9c;
+  --water-mid: #0a4a72;
+  --water-deep: #06304f;
+  --water-abyss: #041f36;
+  --bg: var(--water-deep);
+  --bg-raised: transparent;
+
+  /* Aquarium glass panels */
+  --surface: rgba(190, 240, 255, 0.07);
+  --surface-hover: rgba(190, 240, 255, 0.12);
+  --border: rgba(160, 230, 255, 0.24);
+  --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -20px 40px -30px rgba(0, 0, 0, 0.4);
+
+  --text: #f2fbff;
+  --muted: #b3d7e6;
+  --accent: #8ff0ff;          /* aqua highlight */
+  --accent-2: #5fd3c6;        /* sea green */
+  --coral: #ff8552;           /* clownfish orange */
+  --coral-deep: #f2622f;
+  --sand: #e8d3a6;
+  --sand-deep: #cfb27a;
+  --rim: #0b1720;             /* black aquarium rim */
+
+  --radius: 18px;
   --radius-sm: 12px;
   --header-height: 76px;
-  --font-display: "Fjalla One", "Arial Narrow", sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 html {
-  background: var(--bg);
+  background: var(--water-abyss);
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--water-abyss);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 }
 
 img, video {
@@ -43,7 +58,7 @@ img, video {
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
+  color: var(--water-abyss);
 }
 
 /* Current section in the header nav (set by react-scroll) */
@@ -51,8 +66,9 @@ img, video {
   color: var(--accent) !important;
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 6px;
+  border-radius: 8px;
 }
